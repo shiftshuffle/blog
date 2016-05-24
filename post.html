@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Clean Blog - Sample Post</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+    
+    
+    <link rel="stylesheet" href="../prism.css" data-noprefix />
+
+    
+   
+    
+    
+    <style type="text/css">
+        div.cell {
+  border: 1px solid transparent;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: thin;
+  border-style: solid;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+}
+div.cell.selected {
+  border-color: #ababab;
+  /* Don't border the cells when printing */
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: green;
+  /* Don't border the cells when printing */
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: navy;
+  border-top: 1px solid transparent;
+}
+        
+div.output_prompt {
+  color: darkred;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+        
+        
+        
+    .highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
+
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+body {
+  overflow: visible;
+  padding: 8px;
+}
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+}
+</style>
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+</head>
+
+<body>
+    
+  
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Sample Post</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/eye.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Man must explore, and this is exploration at its greatest</h1>
+                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h1 id="first-chapter">First Chapter</h1>
+<p><b>You</b> can <i>render</i> almost any <span style="color:red;">HTML</span> code you <u>like</u>.</p>
+<p><span class="math display">\[f(x) =
+\left\{
+    \begin{array}{ll}
+        0  &amp; \mbox{if } x = 0 \\
+        {1 \over x} &amp; \mbox{if } x \neq 0
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[\lim\limits_{x \to 0^+} {1 \over 0} = \inf\]</span></p>
+<p><span class="math display">\[\int\limits_a^b 2x \, dx\]</span></p>
+<p><span class="math display">\[max(S) = \max\limits_{i: x_i \in \{S\}} x_i\]</span></p>
+<p><span class="math display">\[min (S) = \min\limits_{i: x_i \in \{S\}} x_i\]</span></p>
+<p><span class="math display">\[\frac{n!}{k!(n-k)!} = {n \choose k}\]</span></p>
+<p><span class="math display">\[\sum\limits_{x=1}^{\infty} {1 \over x} = 2\]</span></p>
+<p><span class="math display">\[\prod\limits_{i=1}^{n} x_i - 1\]</span></p>
+<p><span class="math display">\[f(x) = \sqrt[3]{2x} + \sqrt{x-2}\]</span></p>
+<p><span class="math display">\[f(x) = x^2 - x^{1 \over \pi}\]</span></p>
+<p><span class="math display">\[f(X,n) = X_n + X_{n-1}\]</span></p>
+                    <blockquote>
+<pre><code class="language-julia">type dna
+    genes::Array{Int16,1}
+    score::Float64
+    fitness::Float64
+end
+
+
+target = "To be, or not to be: that is the question"
+targetlist = [int(i) for i in target]
+m=length(targetlist)
+pn=600
+population=[dna(rand(32:128,m),0.0,0.0) for i in 1:pn]
+mutationrate=0.01
+
+
+function fit(d::dna)
+    for i in 1:m
+        if d.genes[i]==targetlist[i]
+            d.score+=1
+        end
+    end
+end
+
+
+function cross(a::dna,b::dna)
+    child=dna([0 for i in 1:m],0.0,0.0)
+    contribution=rand(0:1,m)
+    for i in 1:m
+        if contribution[i]==0
+            child.genes[i]=a.genes[i]
+        else
+            child.genes[i]=b.genes[i]
+        end
+    end
+    return child
+end
+
+
+phenotype(x) = join([char(i) for i in x.genes],"")
+
+
+for k in 1:150
+    matingpool=dna[]
+
+
+    for i in population
+        fit(i)
+        i.fitness=i.score/length(targetlist)
+    end
+
+
+    for i in 1:pn
+        n=int(population[i].fitness*100)
+        for j in 1:n
+            push!(matingpool,population[i])
+        end
+    end
+    # f=[i.score for i in population]
+    # normalized=[i/sum(f) for i in f]
+    # fitn=[i.fitness for i in population]
+    # println(phenotype(population[indmax(normalized)]))
+    # println(phenotype(population[indmax(fitn)]))
+
+
+    fitn=[i.fitness for i in population]
+    println(phenotype(population[indmax(fitn)]))
+
+    #println(length(matingpool))
+
+    for i in 1:pn
+        daddy=matingpool[rand(1:length(matingpool))]
+        mommy=matingpool[rand(1:length(matingpool))]
+        population[i]=cross(daddy,mommy)
+    end
+
+end</code></pre>
+</blockquote>
+                    
+                    <pre><code class="language-julia">using Requests 
+import JSON 
+#data required
+graph_api=&quot;https://graph.facebook.com/&quot; 
+user=&quot;your-user-here&quot; 
+msg=&quot;thelazyfoxjumps&quot; 
+token=&quot;your-token-here&quot; 
+#post a message to my feed
+post(graph_api*user*&quot;/feed&quot;,json={&quot;access_token&quot;=&gt; token, &quot;message&quot;=&gt; msg})</code></pre>
+                    
+                    <p><code class="language-css">p { color: red }</code></p>
+                    
+                    
+                    
+                    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Metaprogramming-in-Julia">Metaprogramming in Julia<a class="anchor-link" href="#Metaprogramming-in-Julia">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Metaprogramming</strong> is writing <strong>code that writes code</strong>.</p>
+<p>Inspired by several other languages, notably Scheme, Julia provides <em>built-in</em> facilities for metaprogramming:</p>
+<ul>
+<li><p>Julia provides access to its parser and <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a>: You can get a <em>symbolic representation</em> of any Julia code.</p>
+</li>
+<li><p>You can manipulate these symbolic representations to transform and generate Julia code at runtime, and <em>evaluate</em> it to run the resulting code.</p>
+</li>
+<li><p>Julia provides <strong>symbolic macros</strong>: these are essentially functions evaluated at <em>parse time</em> which take the <em>syntax tree</em> of the code, perform arbitrary transformations, and insert new code to be later compiled.</p>
+</li>
+</ul>
+<p>Julia macros, inspired by Scheme's <a href="http://en.wikipedia.org/wiki/Hygienic_macro">hygienic macros</a>, effectively allow you to both <strong>extend the syntax of Julia</strong> with arbitrary parse-time code generation.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Symbolic-expressions-in-Julia">Symbolic expressions in Julia<a class="anchor-link" href="#Symbolic-expressions-in-Julia">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="n">ex</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="n">y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+x not defined
+while loading In[1], in expression starting on line 1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using <code>:(.....)</code> or <code>quote .... end</code> produces a <strong>symbolic expression</strong> of type <code>Expr</code>, which contains the <strong>parsed syntax tree</strong> of a Julia expression.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="n">ex</span> <span class="o">=</span> <span class="p">:(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>:(x - 2y)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>dump</code> function uses <strong>introspection</strong> to print the contents of any data structure:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="n">dump</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Expr 
+  head: Symbol call
+  args: Array(Any,(3,))
+    1: Symbol -
+    2: Symbol x
+    3: Expr 
+      head: Symbol call
+      args: Array(Any,(3,))
+        1: Symbol *
+        2: Int64 2
+        3: Symbol y
+      typ: Any
+  typ: Any
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Macros-in-Julia">Macros in Julia<a class="anchor-link" href="#Macros-in-Julia">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Essentially <strong>functions evaluated at parse-time</strong>, which take a <strong>symbolic expression</strong> as input and produce <strong>another expression</strong> as output, which is <strong>inserted into the code</strong> before compilation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="parse-&#8594;-expressions-&#8594;-macro-&#8594;-new-expr.-&#8594;-compile">parse &#8594; expressions &#8594; macro &#8594; new expr. &#8594; compile<a class="anchor-link" href="#parse-&#8594;-expressions-&#8594;-macro-&#8594;-new-expr.-&#8594;-compile">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A simple macro example: <strong>reverse the order of function arguments</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="k">macro</span> <span class="n">reverse</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isa</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">Expr</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">ex</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="p">:</span><span class="n">call</span>
+        <span class="k">return</span> <span class="n">Expr</span><span class="p">(:</span><span class="n">call</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">])</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">ex</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="c"># equivalent to 4 - 1</span>
+<span class="p">@</span><span class="n">reverse</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-useful-macro:-Polynomial-evaluation-by-Horner">A useful macro: Polynomial evaluation by Horner<a class="anchor-link" href="#A-useful-macro:-Polynomial-evaluation-by-Horner">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following macro evaluates the polynomial</p>
+<ul>
+<li>$p(x) = c_0 + c_1 x + \cdots + c_n x^n$</li>
+</ul>
+<p>by <strong>Horner's rule</strong></p>
+<ul>
+<li>$c_0 + x \cdot (c_1 + x \cdot (c_2 + x \cdot (c_3 + \cdots)))$:</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="k">macro</span> <span class="n">horner</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">esc</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="k">end</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span>
+        <span class="n">ex</span> <span class="o">=</span> <span class="p">:(</span><span class="o">$</span><span class="p">(</span><span class="n">esc</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="o">$</span><span class="n">ex</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">Expr</span><span class="p">(:</span><span class="n">block</span><span class="p">,</span> <span class="p">:(</span><span class="n">t</span> <span class="o">=</span> <span class="o">$</span><span class="p">(</span><span class="n">esc</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">ex</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Special-function-evaluation">Special-function evaluation<a class="anchor-link" href="#Special-function-evaluation">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Fast inline polynomial evaluation is very useful for <strong>special functions</strong>.  For example, evaluating the inverse $\mathrm{erf}^{-1}(x)$ of the <strong>error function</strong>:</p>
+<ul>
+<li>$\mathrm{erf}(x) = \frac{2}{\sqrt{pi}} \int_0^x e^{-t^2} dt$</li>
+</ul>
+<p>via <strong>rational approximants</strong> (ratios of polynomials) [Blair (1976)]:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="k">function</span><span class="nf"> my_erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="kt">Float32</span><span class="p">)</span> <span class="c"># specialized for single-precision args</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mf">1.0f0</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mf">1.0f0</span>
+            <span class="k">return</span> <span class="n">inf</span><span class="p">(</span><span class="kt">Float32</span><span class="p">)</span>
+        <span class="k">elseif</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.0f0</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">inf</span><span class="p">(</span><span class="kt">Float32</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="nb">throw</span><span class="p">(</span><span class="n">DomainError</span><span class="p">())</span>
+    <span class="k">elseif</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mf">0.75f0</span> <span class="c"># Table 10 in Blair et al.                               </span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5625f0</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.13095_99674_22f2</span><span class="p">,</span>
+                               <span class="mf">0.26785_22576_0f2</span><span class="p">,</span>
+                              <span class="o">-</span><span class="mf">0.92890_57365f1</span><span class="p">)</span> <span class="o">/</span>
+                   <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12074_94262_97f2</span><span class="p">,</span>
+                               <span class="mf">0.30960_61452_9f2</span><span class="p">,</span>
+                              <span class="o">-</span><span class="mf">0.17149_97799_1f2</span><span class="p">,</span>
+                               <span class="mf">0.1f1</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mf">0.9375f0</span> <span class="c"># Table 29 in Blair et al.                             </span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.87890625f0</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12402_56522_1f0</span><span class="p">,</span>
+                               <span class="mf">0.10688_05957_4f1</span><span class="p">,</span>
+                              <span class="o">-</span><span class="mf">0.19594_55607_8f1</span><span class="p">,</span>
+                               <span class="mf">0.42305_81357f0</span><span class="p">)</span> <span class="o">/</span>
+                   <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.88276_97997f-1</span><span class="p">,</span>
+                               <span class="mf">0.89007_43359f0</span><span class="p">,</span>
+                              <span class="o">-</span><span class="mf">0.21757_03119_6f1</span><span class="p">,</span>
+                               <span class="mf">0.1f1</span><span class="p">)</span>
+    <span class="k">else</span> <span class="c"># Table 50 in Blair et al.                                             </span>
+        <span class="n">t</span> <span class="o">=</span> <span class="mf">1.0f0</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0f0</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.15504_70003_116f0</span><span class="p">,</span>
+                          <span class="mf">0.13827_19649_631f1</span><span class="p">,</span>
+                          <span class="mf">0.69096_93488_87f0</span><span class="p">,</span>
+                         <span class="o">-</span><span class="mf">0.11280_81391_617f1</span><span class="p">,</span>
+                          <span class="mf">0.68054_42468_25f0</span><span class="p">,</span>
+                         <span class="o">-</span><span class="mf">0.16444_15679_1f0</span><span class="p">)</span> <span class="o">/</span>
+              <span class="p">(</span><span class="n">copysign</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span>
+               <span class="p">@</span><span class="n">horner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.15502_48498_22f0</span><span class="p">,</span>
+                          <span class="mf">0.13852_28141_995f1</span><span class="p">,</span>
+                          <span class="mf">0.1f1</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="p">@</span><span class="n">vectorize_1arg</span> <span class="n">Real</span> <span class="n">my_erfinv</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>my_erfinv (generic function with 4 methods)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is precisely how <code>erfinv</code> is implemented in Julia (in single and double precision), and is <strong><em>3–4× faster</em></strong> than the compiled (Fortran?) code in Matlab, and <strong><em>2–3× faster</em></strong> than the compiled (Fortran Cephes) code used in SciPy.</p>
+<p>The difference (at least in Cephes) seems to be mainly that <strong>they have explicit arrays of polynomial coefficients</strong> and call a <strong>subroutine</strong> for Horner's rule, versus inlining it via a macro.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="k">using</span> <span class="n">PyCall</span>
+<span class="p">@</span><span class="n">pyimport</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span> <span class="n">as</span> <span class="n">s</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="o">^</span><span class="mi">7</span><span class="p">);</span>
+<span class="p">@</span><span class="n">time</span> <span class="n">erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">@</span><span class="n">time</span> <span class="n">s</span><span class="o">.</span><span class="n">erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">norm</span><span class="p">(</span><span class="n">erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">erfinv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>elapsed time: 0.245471614 seconds (81140364 bytes allocated)
+elapsed time: 1.099710045 seconds (97767484 bytes allocated, 1.88% gc time)
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.2612000437786667e-15</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+    
+   <script src="../prism.js"></script>
+
+</body>
+
+</html>
