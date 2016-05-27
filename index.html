@@ -28,12 +28,107 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+////////////////////////////////////////////////////////////
+        
+        .video-container {
+  position: absolute
+  /*top: 0;*/
+ /* bottom: 0;*/
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+}
 
+.video-container video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 50%; 
+  min-height: 90%; 
+  
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+  
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+////////////////////////////////////////
+        .overlay { 
+background: rgba(0,0,0,0.5);
+  position: absolute;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  /*bottom: 0;*/
+ /* left: 0;*/
+ /* right: 0;*/
+/*width: 95%;*/
+ /* max-width: 45em;*/
+ /* margin: auto auto 1em;*/
+ /* box-sizing: border-box;*/
+ /* padding: 2em;*/
+/*  line-height: 1.5;*/
+  text-align: center;
+  
+  :last-child { margin-bottom: 0; }
+
+  h1 {
+    font-size: 14pt;
+    font-weight: normal;
+    text-shadow: 0 0 .3em #000;
+    margin: 0 0 1em;
+  }
+
+  p {
+    font-size: 11pt;
+    text-shadow: 0 0 .3em #000;
+    margin: 1em 0;
+  }
+  a {
+    color: #fff;
+  }
+}
+
+code { font-family: monospace; }
+    </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="video-container">
+  
+  <video autoplay loop="true" width="1280" height="720">
+   <!-- <source type="video/mp4" src="https://www.dropbox.com/s/dti34po6fg7860p/beepl-pink-vynil.mp4?dl=1">-->
+      
+    <source type="video/mp4" src="out2.mp4">
+      
+      
+  </video>
+                    <div class="site-heading">
+                        <h1>Matheux</h1>
+                        <hr class="small">
+                        <span class="subheading">A blog for hackish mathematicians</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        
+        
+        <!-- Navigation -->
+        
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -68,22 +163,8 @@
         </div>
         <!-- /.container -->
     </nav>
+            
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/cubic.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Matheux</h1>
-                        <hr class="small">
-                        <span class="subheading">A blog for hackish mathematicians</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <div class="container">
@@ -92,47 +173,37 @@
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
+                            Pydefi
                         </h2>
                         <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
+                            Renverse moi si tu peux
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+                    <p class="post-meta">Posted by <a href="#">Shift</a> on May 27, 2016</p>
                 </div>
                 <hr>
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="post2.html">
                         <h2 class="post-title">
-                            I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+                            Lorenz
                         </h2>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
+                    <p class="post-meta">Posted by <a href="#">Shift</a> on May 27, 2016</p>
                 </div>
                 <hr>
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="post3.html">
                         <h2 class="post-title">
-                            Science has not yet mastered prophecy
+                            Game of life
                         </h2>
                         <h3 class="post-subtitle">
-                            We predict too much for the next year and yet far too little for the next ten.
+                            Simulation of Game Of Life
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
+                    <p class="post-meta">Posted by <a href="#">Shift</a> on May 27, 2016</p>
                 </div>
                 <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Failure is not an option
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-                </div>
+                
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
