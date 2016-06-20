@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Matheux</title>
+    <link>http://shiftshuffle.github.io/blog/tags/golang/</link>
+    <description>Recent content in Golang on Matheux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Jun 2016 05:22:22 -0500</lastBuildDate>
+    <atom:link href="http://shiftshuffle.github.io/blog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Analyse</title>
+      <link>http://shiftshuffle.github.io/blog/post/analyse/</link>
+      <pubDate>Mon, 20 Jun 2016 05:22:22 -0500</pubDate>
+      
+      <guid>http://shiftshuffle.github.io/blog/post/analyse/</guid>
+      <description>
+
+&lt;h1 id=&#34;analyse-harmonique&#34;&gt;Analyse Harmonique&lt;/h1&gt;
+
+&lt;p&gt;Dans cet article nous allons essayer de montrer les propriétés les plus importantes par rapport a la transformée de fourier sur les groupes abéliens finis et leur application a la théorie des nombres.&lt;/p&gt;
+
+&lt;h1 id=&#34;caractère-d-un-groupe-abélien-fini&#34;&gt;Caractère d&amp;rsquo;un groupe abélien fini&lt;/h1&gt;
+
+&lt;p&gt;Dans la suite $G$ est une groupe abélien fini noté additivement. ($\text{ordre } n$)&lt;/p&gt;
+
+&lt;p&gt;Un caractère d&amp;rsquo;un groupe est une homomorphisme $\chi$ : $G$ $\longrightarrow$ ${\mathbb C}^*$&lt;/p&gt;
+
+&lt;p&gt;${\mathbb C}^*$ est le groupe multiplicatif des nombres complexes non nuls.&lt;/p&gt;
+
+&lt;p&gt;Alors on a $\chi(0) = 1$ et $\chi(a+b) = \chi(a)\cdot\chi(b)$, pour tout $a,b \in G$&lt;/p&gt;
+
+&lt;p&gt;On a aussi $\chi(a)^n = \chi(a\cdot n) = \chi(0) = 1$, pour tout $a\in G$ et pour tout caractère $\chi$ , ainsi, chaque caractère complexe de $G$ est un homomorphisme dans le groupe multiplicatif cyclique () des racines de l&amp;rsquo;unité.&lt;/p&gt;
+
+&lt;p&gt;Dans l&amp;rsquo;ensemble $\widehat{G}$ des caractères de $G$ on définit la multiplication par:
+$(\chi \circ \chi^\prime)(a) = \chi(a) \cdot \chi^\prime(a)$  $\hspace{2mm}$ pour tout $a \in G$.&lt;/p&gt;
+
+&lt;p&gt;$\widehat{G}$ est un groupe abélien multiplicatif, ayant pour élément neutre le &lt;em&gt;caractère unité&lt;/em&gt; $\chi_0$ tant défini par $\chi_0 = 1$ pour tout $a \in G$&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;inverse de $\chi$ est  $\chi^{-1}$, défini par $\chi^{-1}(a) = \chi(a)^{-1}$,
+le &lt;em&gt;caractère conjugué&lt;/em&gt; $\overline{\chi}$ est défini par $\overline{\chi}(a) = \overline{\chi(a)}$. Il est donc égal a l&amp;rsquo;inverse de $\chi$. (L&amp;rsquo;inverse d&amp;rsquo;un nombre complexe $\alpha $ est $\frac{\overline{\alpha}}{| \alpha |  } $, mais si $\alpha$ est une racine de l&amp;rsquo;unité $| \alpha |=1$ donc $\alpha^{-1} = \overline{\alpha} $ )&lt;/p&gt;
+
+&lt;h1 id=&#34;relations-d-orthogonalité-des-caractères&#34;&gt;Relations d&amp;rsquo;orthogonalité des caractères&lt;/h1&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;div&gt;$\sum\limits_{a\in G} \chi_i(a) =  $ $\begin{cases}
+n, &amp; \text{lorsque }\chi_i=\chi_0 \\
+0, &amp; \text{lorsque }\chi_i\neq\chi_0
+\end{cases}$&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;div&gt;$\sum\limits_{a\in G} \chi_i(a)\overline{\chi_j(a)} = $ $\begin{cases}
+n, &amp; \text{lorsque }\chi_i=\chi_j \\
+0, &amp; \text{lorsque }\chi_i\neq\chi_j
+\end{cases}$&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;div&gt;$\sum\limits_{\chi\in\widehat{G}} \chi(a) = $ $\begin{cases}
+n, &amp; \text{lorsque }a=0 \\
+0, &amp; \text{lorsque }a\neq0
+\end{cases}$&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;div&gt;$\sum\limits_{\chi\in\widehat{G}} \chi(a)\overline{\chi(b)} = $ $\begin{cases}
+n, &amp; \text{lorsque }a=b \\
+0, &amp; \text{lorsque }a\neq b
+\end{cases}$&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;démonstration&#34;&gt;Démonstration :&lt;/h2&gt;
+
+&lt;p&gt;$\sum\limits_{a\in G} \chi_0(a) = \vert  G\vert  = n$&lt;/p&gt;
+
+&lt;p&gt;Si $\chi_i = \chi_0$ alors&lt;/p&gt;
+
+&lt;p&gt;$\sum\limits_{a\in G} \chi_0(a) = \vert  G\vert  = n$.&lt;/p&gt;
+
+&lt;p&gt;Si $\chi_i\neq\chi_0$ alors soit $b\in G$ tel que
+$\chi_i(b)\neq 1$.&lt;/p&gt;
+
+&lt;p&gt;On a donc&lt;/p&gt;
+
+&lt;div&gt;$\chi_i(b)\cdot(\sum\limits_{a\in G} \chi_i(a)) = \sum\limits_{a\in G} \chi_i(a)\chi_i(b) = \sum\limits_{a\in G} \chi_i(a+b) = \sum\limits_{a\in G} \chi_i(a)$&lt;/div&gt;
+
+&lt;p&gt;Et ainsi $\sum\limits_{a\in G} \chi_i(a) = 0$&lt;/p&gt;
+
+&lt;p&gt;En prenant $\chi_i\overline{\chi_j}$&lt;/p&gt;
+
+&lt;p&gt;la relation précédent donne $\sum\limits_{a\in G} \chi_i(a)\overline{\chi_j(a)}$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(à suivre&amp;hellip;)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
