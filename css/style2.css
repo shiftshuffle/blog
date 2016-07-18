@@ -808,8 +808,13 @@ iframe {
 }
 .lower,
 input {
-    display: none
+    /*display: none*/
 }
+
+input#op {
+    display: none; 
+ }
+ 
 .author-bio {
     margin: 40px 0;
     width: 100%;
