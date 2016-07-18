@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-  <title>horarios &middot; Matheux</title>
+  <title>monetary - graph &middot; Matheux</title>
   <link rel="stylesheet" href="http://shiftshuffle.github.io/blog//css/style2.css" />
   <link rel="stylesheet" href="http://shiftshuffle.github.io/blog//css/font-awesome.min.css" />
   <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,600' rel='stylesheet' type='text/css'>
@@ -19,6 +19,9 @@
   
 <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> 
+
+<!-- Morris Charts CSS -->
+    <link href="../../css/morris.css" rel="stylesheet">
 
 
   
@@ -58,6 +61,30 @@
 
 <style>
 
+select {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+.hid {
+    visibility: hidden;
+}
+
 </style>
 
 
@@ -67,8 +94,12 @@
 
 <body>
 
-<header class="header" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(http://shiftshuffle.github.io/blog/img/20130423Dzenis2-702x336.jpg) 29.9% 29.9% / cover;" role="banner">
-<!-- featuredimage. Otherwise show default //-->
+
+   <header class="header" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(http://shiftshuffle.github.io/blog/img/57f7d92c20193651bb6dc75c5b2efb0b.jpg) 29.9% 29.9% / cover;" role="banner">  
+
+
+
+
 
       <section id="branding">
         <div id="site-title"><a href="http://shiftshuffle.github.io/blog/">Matheux</a></div>
@@ -99,9 +130,9 @@
       </section>
       <div class="post-heading">
         <h1>
-        horarios
+        monetary - graph
           <div class="share-icons-header">
-            <a href="http://www.twitter.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+            <a href="http://www.twitter.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
             <g>
               <g>
@@ -118,7 +149,7 @@
                   S459.64,584.182,306,584.182S27.818,459.64,27.818,306z"/>
               </g>
             </svg></a>
-            <a href="http://plus.google.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+            <a href="http://plus.google.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
               <g>
                 <g>
@@ -139,7 +170,7 @@
                     S459.64,584.182,306,584.182S27.818,459.64,27.818,306z"/>
                 </g>
             </svg></a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
             <g>
@@ -159,51 +190,237 @@
 
     </header>
 
+    
+
+
     <div id="container">
 
 
 <section id="content" role="main">
 <section class="entry-meta">
-  <span class="post-date">Jul 16, 2016</span>
-</section></header>
+  <span class="post-date">Jul 18, 2016</span>
+</section>
+
+ 
+ </header>
+
 <section class="entry-content">
 <article>
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+Here we have a table with an average of the exchange from pesos to US Dollars and to UDIS each year, with data from Banxico which can be found <a href="http://www.banxico.org.mx/dyn/portal-mercado-cambiario/index.html">here</a><br >
+<br >
 
+<table class="table">
+                        <thead>
+                            <tr>
+                                <th> year </th>
+                                <th>UDIS</th>
+                                <th>USD</th>
+          
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+<td>1999</td>
+<td>2.521468</td>
+<td>9.9836</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>2.698165</td>
+<td>9.4108</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>2.961597</td>
+<td>9.7183</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>3.072002</td>
+<td>9.0797</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>3.245878</td>
+<td>11.0052</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>3.401895</td>
+<td>11.434</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>3.557506</td>
+<td>10.6018</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>3.679065</td>
+<td>10.8612</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>3.842218</td>
+<td>11.1348</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>3.954224</td>
+<td>10.7465</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>4.212143</td>
+<td>15.2178</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>4.432283</td>
+<td>12.2488</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>4.571717</td>
+<td>11.9441</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>4.741059</td>
+<td>12.6299</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>4.914766</td>
+<td>12.7699</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>5.135003</td>
+<td>13.1324</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>5.283942</td>
+<td>15.4445</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>5.410651</td>
+<td>18.2762</td>
+</tr>
+                        </tbody>
+                    </table>
+
+<br >
+<br >
+
+With that data here are some different graphs, showing how much money we would have if we decide to stop investing in a certain year, and given we started in a specific year (each graph starts from different year)
+
+<br >
+<br >
+<div class="container">
+
+           
+<!--
+<select id="select1">
+    <option selected="selected" value="1"> 1999 </option>
+    <option value="2"> 2000 </option>
+<option value="3"> 2001 </option>
+<option value="4"> 2002 </option>
+<option value="5"> 2003 </option>
+<option value="6"> 2004 </option>
+<option value="7"> 2005 </option>
+<option value="8"> 2006 </option>
+<option value="9"> 2007 </option>
+<option value="10"> 2008 </option>
+<option value="11"> 2009 </option>
+<option value="12"> 2010 </option>
+<option value="13"> 2011 </option>
+<option value="14"> 2012 </option>
+<option value="15"> 2013 </option>
+<option value="16"> 2014 </option>
+<option value="17"> 2015 </option>
+  </select>
+
+  -->
+
+  <div class="col-sm-12">
+  <h3>starting from 1999</h3>  
+</div>
+  <div id="morris-bar-chart1"></div>
+<div class="col-sm-12">
+  <h3>starting from 2000</h3>  
+</div>
+  <div id="morris-bar-chart2"></div>
+<div class="col-sm-12">
+  <h3>starting from 2001</h3>  
+</div>
+  <div id="morris-bar-chart3"></div>
+<div class="col-sm-12">
+  <h3>starting from 2002</h3>  
+</div>
+  <div id="morris-bar-chart4"></div>
+<div class="col-sm-12">
+  <h3>starting from 2003</h3>  
+</div>
+  <div id="morris-bar-chart5"></div>
+<div class="col-sm-12">
+  <h3>starting from 2004</h3>  
+</div>
+  <div id="morris-bar-chart6"></div>
+<div class="col-sm-12">
+  <h3>starting from 2005</h3>  
+</div>
+  <div id="morris-bar-chart7"></div>
+<div class="col-sm-12">
+  <h3>starting from 2006</h3>  
+</div>
+  <div id="morris-bar-chart8"></div>
+<div class="col-sm-12">
+  <h3>starting from 2007</h3>  
+</div>
+  <div id="morris-bar-chart9"></div>
+<div class="col-sm-12">
+  <h3>starting from 2008</h3>  
+</div>
+  <div id="morris-bar-chart10"></div>
+<div class="col-sm-12">
+  <h3>starting from 2009</h3>  
+</div>
+  <div id="morris-bar-chart11"></div>
+<div class="col-sm-12">
+  <h3>starting from 2010</h3>  
+</div>
+  <div id="morris-bar-chart12"></div>
+<div class="col-sm-12">
+  <h3>starting from 2011</h3>  
+</div>
+  <div id="morris-bar-chart13"></div>
+<div class="col-sm-12">
+  <h3>starting from 2012</h3>  
+</div>
+  <div id="morris-bar-chart14"></div>
+<div class="col-sm-12">
+  <h3>starting from 2013</h3>  
+</div>
+  <div id="morris-bar-chart15"></div>
+<div class="col-sm-12">
+  <h3>starting from 2014</h3>  
+</div>
+  <div id="morris-bar-chart16"></div>
+<div class="col-sm-12">
+  <h3>starting from 2015</h3>  
+</div>
+  <div id="morris-bar-chart17"></div>
+
+
+    </div>
 </section>
 <div class="entry-links"></div>
 </article>
 <div class="share-icons-body">
-  <a href="http://www.twitter.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+  <a href="http://www.twitter.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
   <g>
     <g>
@@ -220,7 +437,7 @@
         S459.64,584.182,306,584.182S27.818,459.64,27.818,306z"/>
     </g>
   </svg></a>
-  <a href="http://plus.google.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+  <a href="http://plus.google.com/share?url=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
     <g>
       <g>
@@ -241,7 +458,7 @@
           S459.64,584.182,306,584.182S27.818,459.64,27.818,306z"/>
       </g>
   </svg></a>
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fhorarios%2f" target="_blank">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshiftshuffle.github.io%2fblog%2fpost%2fmonetarygraph%2f" target="_blank">
   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
   <g>
@@ -285,6 +502,10 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+
+  
+
+  
   
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -295,4 +516,22 @@
     ga('send', 'pageview');
   </script>
 
-  <script src="
+
+    <script>
+  //$("#select1").change(function(){
+
+ //$('.myclass').attr('id','morris-bar-chart'+this.value);
+ //$('.myclass').empty();
+  //$('.myclass').show();
+
+
+//});
+  </script>
+
+  
+
+  </body>
+  <!-- Morris Charts JavaScript -->
+    <script src="../../js/raphael-min.js" ></script>-
+    <script src="../../js/morris.min.js" ></script>
+    <script src="../../js/morris-data.js" ></script>
